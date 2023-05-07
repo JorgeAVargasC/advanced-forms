@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-
 import { Form, Input } from '@/components/Forms'
 
 import { Button } from './components/Forms'
@@ -10,15 +8,22 @@ function App() {
   const {
     form,
     formResults,
-    onSubmit
+    formDefaultValues,
+    onSubmit,
+    onChange
   } = useFormExample()
 
   return (
-    <div className='w-full grid grid-cols-2'>
+    <div className='bg-slate-950 min-h-screen w-full grid place-items-center text-white grid-cols-2'>
       <div>
         {
           form && (
-            <Form onSubmit={onSubmit} className='flex flex-col'>
+            <Form 
+              onSubmit={onSubmit}
+              onChange={onChange}
+              defaultValues={formDefaultValues}
+              className='flex flex-col'
+            >
               <Input {...form.fullName} />
               <Input {...form.email} />
               <Button  {...form.submit} />

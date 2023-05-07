@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const useFormExample = () => {
   const [form, setForm] = useState()
-  const [formValues, setFormValues] = useState({
-    fullName: 'fullName Default',
-    cellPhone: 'cellPhone Default',
-    email: 'email Default',
-    password: 'password Default',
-    city: { value: '', label: 'Select a city' },
-    dificulty: '',
-    tools: ''
+
+  const [formDefaultValues, setFormDefaultValues] = useState({
+    fullName: 'fullName-default',
+    // cellPhone: 'cellPhone Default',
+    email: 'email-default',
+    // password: 'password Default',
+    // city: { value: '', label: 'Select a city' },
+    // dificulty: '',
+    // tools: ''
   })
 
   const [formResults, setFormResults] = useState()
@@ -19,7 +20,7 @@ export const useFormExample = () => {
       fullName: {
         name: 'fullName',
         label: 'Full Name',
-        defaultValue: formValues.fullName,
+        // defaultValue: formValues.fullName,
         validations: {
           required: {
             value: true
@@ -34,7 +35,7 @@ export const useFormExample = () => {
       cellPhone: {
         name: 'cellPhone',
         label: 'Cell Phone',
-        defaultValue: formValues.cellPhone,
+        // defaultValue: formValues.cellPhone,
         validations: {
           required: {
             value: true
@@ -55,7 +56,7 @@ export const useFormExample = () => {
       email: {
         name: 'email',
         label: 'Email',
-        defaultValue: formValues.email,
+        // defaultValue: formValues.email,
         validations: {
           required: {
             value: true
@@ -73,7 +74,7 @@ export const useFormExample = () => {
       password: {
         name: 'password',
         label: 'Password',
-        defaultValue: formValues.password,
+        // defaultValue: formValues.password,
         validations: {
           required: {
             value: true
@@ -85,7 +86,7 @@ export const useFormExample = () => {
       city: {
         name: 'city',
         label: 'City',
-        defaultValue: formValues.city,
+        // defaultValue: formValues.city,
         validations: {
           required: {
             value: true
@@ -98,7 +99,7 @@ export const useFormExample = () => {
       dificulty: {
         name: 'dificulty',
         label: 'dificulty',
-        defaultValue: formValues.dificulty,
+        // defaultValue: formValues.dificulty,
         validations: {
           required: {
             value: true
@@ -111,7 +112,7 @@ export const useFormExample = () => {
       tools: {
         name: 'tools',
         label: 'Tools',
-        defaultValue: formValues.tools,
+        // defaultValue: formValues.tools,
         validations: {
           required: {
             value: true
@@ -124,7 +125,7 @@ export const useFormExample = () => {
       photo: {
         name: 'photo',
         label: 'Photo',
-        defaultValue: formValues.photo,
+        // defaultValue: formValues.photo,
         validations: {
           required: {
             value: true
@@ -139,16 +140,21 @@ export const useFormExample = () => {
         loading: false
       }
     })
-  }, [formValues])
+  }, [])
 
   const onSubmit = (data) => {
     setFormResults(data)
   }
 
+  const onChange = (e) => {
+    console.log(e)
+  }
+
   return {
     form,
-    formValues,
     formResults,
-    onSubmit
+    formDefaultValues,
+    onSubmit,
+    onChange
   }
 }

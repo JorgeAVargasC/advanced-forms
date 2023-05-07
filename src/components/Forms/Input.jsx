@@ -1,31 +1,16 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { InfoTags } from '@/components'
 
-export const Input = ({ register, name, label, validations, render, errors, ...rest }) => {
-
+export const Input = ({ register, name, label, validations, render, errors, onChange, ...rest }) => {
   const error = errors[name]
-
   const errorMessage = error?.message
-
   const errorRequired = !!(error?.types?.required)
   const errorMinLength = !!(error?.types?.minLength)
   const errorMaxLength = !!(error?.types?.maxLength)
   const errorPattern = !!(error?.types?.pattern)
   const errorMax = !!(error?.types?.max)
   const errorMin = !!(error?.types?.min)
-
-  useEffect(() => {
-    console.log(error)
-    console.table({
-      errorRequired,
-      errorMinLength,
-      errorMaxLength,
-      errorPattern,
-      errorMax,
-      errorMin,
-    })
-  }, [errorRequired, errorMinLength, errorMaxLength, errorPattern, errorMax, errorMin])
 
   return (
     <>
@@ -34,7 +19,7 @@ export const Input = ({ register, name, label, validations, render, errors, ...r
           <div>
             <input 
               {...register(name, validations)}
-              className='border outline-none'
+              className='border outline-none bg-slate-950 text-white'
               {...rest}
             />
 

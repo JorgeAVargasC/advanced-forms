@@ -10,15 +10,23 @@ export const Form = ({
 }) => {
   const {
     handleSubmit,
+    getValues,
     register,
     formState: { errors },
     control
   } = useForm({ defaultValues, criteriaMode: 'all' })
 
-  
+  const handleOnChange = () => {
+    const { submit, ...values } = getValues()
+    onChange(values)
+  }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} onChange={onChange} {...rest}>
+    <form 
+      onSubmit={handleSubmit(({submit, ...values}) => onSubmit(values))}
+      onChange={handleOnChange}
+      {...rest}
+    >
       {Array.isArray(children)
         ? children.map((child) => {
           return child.props.name

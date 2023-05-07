@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react'
 export const useFormExample = () => {
   const [form, setForm] = useState()
 
-  const [formDefaultValues, setFormDefaultValues] = useState({
+  const [formDefaultValues] = useState({
     fullName: 'fullName-default',
+    message: 'message-default',
     // cellPhone: 'cellPhone Default',
     email: 'email-default',
     // password: 'password Default',
@@ -15,6 +16,8 @@ export const useFormExample = () => {
 
   const [formResults, setFormResults] = useState()
 
+  const [loading, setLoading] = useState(false)
+
   useEffect(() => {
     setForm({
       fullName: {
@@ -24,6 +27,24 @@ export const useFormExample = () => {
         validations: {
           required: {
             value: true
+          },
+          minLength: {
+            value: 4
+          }
+        },
+        render: true,
+        disabled: false
+      },
+      message: {
+        name: 'message',
+        label: 'Message',
+        // defaultValue: formValues.message,
+        validations: {
+          required: {
+            value: true
+          },
+          maxLength: {
+            value: 50
           },
           minLength: {
             value: 4
@@ -137,17 +158,21 @@ export const useFormExample = () => {
       submit: {
         name: 'submit',
         label: 'Submit',
-        loading: false
+        loading
       }
     })
-  }, [])
+  }, [loading])
 
   const onSubmit = (data) => {
-    setFormResults(data)
+    setLoading(true)
+    setTimeout(() => {
+      setFormResults(data)
+      setLoading(false)
+    }, 2000)
   }
 
   const onChange = (e) => {
-    console.log(e)
+    // console.log(e)
   }
 
   return {

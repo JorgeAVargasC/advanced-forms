@@ -1,6 +1,6 @@
 // import LoadingSVG from '@/components/LoadingSVG'
 
-export const Button = ({ register, name, label, render=true, loading, ...rest }) => {
+export const Button = ({ register, name, label, render=true, loading=false, ...rest }) => {
   return (
     <>
       {
@@ -9,9 +9,10 @@ export const Button = ({ register, name, label, render=true, loading, ...rest })
             <button
               {...register(name)}
               className='border outline-none'
+              disabled={loading}
               {...rest}
             >
-              {label}
+              {(loading && 'Loading') || label}
             </button>
           </div>
         )

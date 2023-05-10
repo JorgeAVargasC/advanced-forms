@@ -23,7 +23,7 @@ export const TextArea = ({ register, name, label, validations, render, errors, .
               {...restRegister}
               ref={(e) => { ref(e); textAreaRef.current = e }}
               onInput={handleAutoResize}
-              className={`border outline-none bg-slate-950 text-white overflow-hidden resize-none`}
+              className={`w-full border outline-none bg-slate-950 text-white overflow-hidden resize-none`}
               {...rest}
             />
 

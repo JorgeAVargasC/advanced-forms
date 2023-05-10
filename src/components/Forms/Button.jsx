@@ -8,7 +8,7 @@ export const Button = ({ register, name, label, render=true, loading=false, ...r
           <div>
             <button
               {...register(name)}
-              className='border outline-none'
+              className='w-full border outline-none'
               disabled={loading}
               {...rest}
             >

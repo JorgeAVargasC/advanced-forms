@@ -2,9 +2,9 @@ import {
   Button,
   Form, 
   Input,
+  Radio,
   Select,
-  TextArea 
-} from '@/components/Forms'
+  TextArea} from '@/components/Forms'
 
 import { useFormExample } from './useFormExample'
 
@@ -23,7 +23,7 @@ function App() {
     <div className='bg-slate-950 min-h-screen w-full text-white grid place-items-center'>
       <div className='grid grid-cols-3 gap-8'>
         <div className='border border-slate-700 p-4 flex flex-col gap-4 rounded-lg'>
-          <h2 className='text-2xl font-bold'>Form</h2>
+          <h2 className='text-2xl font-bold'>React Hook Form</h2>
           <hr className='border border-slate-700' />
           {
             form && (
@@ -37,6 +37,7 @@ function App() {
                 <Input {...form.email} />
                 <TextArea {...form.message} />
                 <Select {...form.city} />
+                <Radio {...form.dificulty} />
 
                 <Button  {...form.submit} />
               </Form>

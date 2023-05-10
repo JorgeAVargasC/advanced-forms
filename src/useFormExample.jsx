@@ -9,8 +9,8 @@ export const useFormExample = () => {
     // cellPhone: 'cellPhone Default',
     email: 'jhon.doe@email.com',
     // password: 'password Default',
-    // city: { value: '', label: 'Select a city' },
-    // dificulty: '',
+    city: 'BOG',
+    dificulty: 0.5,
     // tools: ''
   })
 
@@ -125,7 +125,11 @@ export const useFormExample = () => {
             value: true
           }
         },
-        options: ['Select', 'Easy', 'Medium', 'Hard'],
+        options: [
+          { value: 0, label: 'Easy' },
+          { value: 0.5, label: 'Medium' },
+          { value: 1, label: 'Hard' }
+        ],
         render: true,
         disabled: false
       },
@@ -137,7 +141,11 @@ export const useFormExample = () => {
             value: true
           }
         },
-        options: ['Select', 'React', 'Vue', 'Angular'],
+        options: [
+          { value: 'react', label: 'React' },
+          { value: 'tsx', label: 'TSX' },
+          { value: 'hexagonal', label: 'Hexagonal Architecture' }
+        ],
         render: true,
         disabled: false
       },
@@ -170,6 +178,7 @@ export const useFormExample = () => {
 
   const onChange = (data) => {
     setFormResultsOnChage(data)
+    console.log(data)
   }
 
   return {

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ErrorMessages } from './ErrorMessages'
 
-export const Radio = ({ register, name, label, validations, render, errors, options, control, ...rest }) => {
+export const Checkbox = ({ register, name, label, validations, render, errors, options, control, ...rest }) => {
 
   return (
     <>
@@ -15,7 +15,7 @@ export const Radio = ({ register, name, label, validations, render, errors, opti
                   <input
                     {...register(name, validations)}
                     className=''
-                    type='radio'
+                    type='checkbox'
                     value={option.value}
                     defaultChecked={control._formValues[name] === option.value}
                     id={option.value}
@@ -27,10 +27,10 @@ export const Radio = ({ register, name, label, validations, render, errors, opti
             }
 
             <ErrorMessages 
-              errors={errors} 
+              errors={errors}
               validations={validations}
-              name={name} 
-              label={label} 
+              name={name}
+              label={label}
             />
 
           </div>

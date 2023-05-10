@@ -1,5 +1,6 @@
 import { 
   Button,
+  Checkbox,
   Form, 
   Input,
   Radio,
@@ -38,7 +39,7 @@ function App() {
                 <TextArea {...form.message} />
                 <Select {...form.city} />
                 <Radio {...form.dificulty} />
-
+                <Checkbox {...form.tools} />
                 <Button  {...form.submit} />
               </Form>
             )

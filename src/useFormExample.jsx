@@ -11,7 +11,7 @@ export const useFormExample = () => {
     // password: 'password Default',
     city: 'BOG',
     dificulty: 0.5,
-    // tools: ''
+    tools: ['react', 'tsx'],
   })
 
   const [formResultsOnSubmit, setFormResultsOnSubmit] = useState()
@@ -169,6 +169,7 @@ export const useFormExample = () => {
   }, [loading])
 
   const onSubmit = (data) => {
+    console.log(data)
     setLoading(true)
     setTimeout(() => {
       setFormResultsOnSubmit(data)

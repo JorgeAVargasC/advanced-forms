@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import * as yup from 'yup';
 
 export const useFormExample = () => {
   const [form, setForm] = useState()
@@ -12,6 +13,19 @@ export const useFormExample = () => {
     city: 'BOG',
     dificulty: 0.5,
     tools: ['react', 'tsx'],
+    photos: []
+  })
+
+  const schema = yup.object().shape({
+    fullName: yup.string().required().min(2),
+    message: yup.string().required().min(4).max(50),
+    // cellPhone: yup.string().required().min(4).max(12).matches(/^[0-9]*$/, 'Only numbers'),
+    email: yup.string().required().email().matches(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/),
+    // password: yup.string().required(),
+    city: yup.string().required(),
+    dificulty: yup.number().required(),
+    tools: yup.array().required(),
+    photos: yup.array().required().min(1)
   })
 
   const [formResultsOnSubmit, setFormResultsOnSubmit] = useState()
@@ -24,90 +38,36 @@ export const useFormExample = () => {
       fullName: {
         name: 'fullName',
         label: 'Full Name',
-        validations: {
-          required: {
-            value: true
-          },
-          minLength: {
-            value: 2
-          }
-        },
         render: true,
         disabled: false
       },
       message: {
         name: 'message',
         label: 'Message',
-        validations: {
-          required: {
-            value: true
-          },
-          maxLength: {
-            value: 50
-          },
-          minLength: {
-            value: 4
-          }
-        },
         render: true,
         disabled: false
       },
       cellPhone: {
         name: 'cellPhone',
         label: 'Cell Phone',
-        validations: {
-          required: {
-            value: true
-          },
-          maxLength: {
-            value: 12
-          },
-          pattern: {
-            value: /^[0-9]*$/
-          },
-          minLength: {
-            value: 4
-          }
-        },
         render: true,
         disabled: false
       },
       email: {
         name: 'email',
         label: 'Email',
-        validations: {
-          required: {
-            value: true
-          },
-          maxLength: {
-            value: 50
-          },
-          pattern: {
-            value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-          }
-        },
         render: true,
         disabled: false
       },
       password: {
         name: 'password',
         label: 'Password',
-        validations: {
-          required: {
-            value: true
-          }
-        },
         render: true,
         disabled: false
       },
       city: {
         name: 'city',
         label: 'City',
-        validations: {
-          required: {
-            value: true
-          }
-        },
         options: [
           { value: '', label: 'Select a city' },
           { value: 'BOG', label: 'Bogota' },
@@ -120,11 +80,6 @@ export const useFormExample = () => {
       dificulty: {
         name: 'dificulty',
         label: 'dificulty',
-        validations: {
-          required: {
-            value: true
-          }
-        },
         options: [
           { value: 0, label: 'Easy' },
           { value: 0.5, label: 'Medium' },
@@ -136,11 +91,6 @@ export const useFormExample = () => {
       tools: {
         name: 'tools',
         label: 'Tools',
-        validations: {
-          required: {
-            value: true
-          }
-        },
         options: [
           { value: 'react', label: 'React' },
           { value: 'tsx', label: 'TSX' },
@@ -149,14 +99,10 @@ export const useFormExample = () => {
         render: true,
         disabled: false
       },
-      photo: {
-        name: 'photo',
-        label: 'Photo',
-        validations: {
-          required: {
-            value: true
-          }
-        },
+      photos: {
+        name: 'photos',
+        label: 'Photos',
+        multiple: true,
         render: true,
         disabled: false
       },
@@ -188,6 +134,7 @@ export const useFormExample = () => {
     formResultsOnChage,
     formDefaultValues,
     onSubmit,
-    onChange
+    onChange,
+    schema
   }
 }

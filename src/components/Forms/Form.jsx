@@ -1,11 +1,13 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 export const Form = ({
   defaultValues,
   children,
   onSubmit,
   onChange,
+  schema,
   ...rest
 }) => {
   const {
@@ -13,8 +15,14 @@ export const Form = ({
     getValues,
     register,
     formState: { errors },
-    control
-  } = useForm({ defaultValues, criteriaMode: 'all' })
+    control,
+    setValue,
+    watch
+  } = useForm({ 
+    defaultValues, 
+    criteriaMode: 'all',
+    resolver: yupResolver(schema)
+  })
 
   const handleOnChange = () => {
     const { submit, ...values } = getValues()
@@ -36,6 +44,9 @@ export const Form = ({
                 register,
                 errors,
                 control,
+                setValue,
+                watch,
+                handleOnChange,
                 key: child.props.name
               }
             })
@@ -48,6 +59,9 @@ export const Form = ({
               register,
               errors,
               control,
+              setValue,
+              watch,
+              handleOnChange,
               key: children.props.name
             }
           })

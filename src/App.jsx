@@ -1,11 +1,13 @@
 import { 
   Button,
   Checkbox,
+  File,
   Form, 
   Input,
   Radio,
   Select,
-  TextArea} from '@/components/Forms'
+  TextArea
+} from '@/components/Forms'
 
 import { useFormExample } from './useFormExample'
 
@@ -17,12 +19,13 @@ function App() {
     formResultsOnChage,
     formDefaultValues,
     onSubmit,
-    onChange
+    onChange,
+    schema
   } = useFormExample()
 
   return (
     <div className='bg-slate-950 min-h-screen w-full text-white grid place-items-center'>
-      <div className='grid grid-cols-3 gap-8'>
+      <div className='grid md:grid-cols-3 gap-8'>
         <div className='border border-slate-700 p-4 flex flex-col gap-4 rounded-lg'>
           <h2 className='text-2xl font-bold'>React Hook Form</h2>
           <hr className='border border-slate-700' />
@@ -33,6 +36,7 @@ function App() {
                 onChange={onChange}
                 defaultValues={formDefaultValues}
                 className='flex flex-col gap-4'
+                schema={schema}
               >
                 <Input {...form.fullName} />
                 <Input {...form.email} />
@@ -40,6 +44,7 @@ function App() {
                 <Select {...form.city} />
                 <Radio {...form.dificulty} />
                 <Checkbox {...form.tools} />
+                <File {...form.photos} />
                 <Button  {...form.submit} />
               </Form>
             )
@@ -56,7 +61,7 @@ function App() {
                   Object.keys(formResultsOnChage).map((key, index) => (
                     <div key={index} className='grid grid-cols-2 gap-4'>
                       <span className='border'>{key}</span>
-                      <span className='border'>{formResultsOnChage[key]}</span>
+                      <span className='border'>{`${formResultsOnChage[key]}`}</span>
                     </div>
                   )
                   )
@@ -78,7 +83,7 @@ function App() {
                     return (
                       <div key={index} className='grid grid-cols-2 gap-4'>
                         <span className='border'>{key}</span>
-                        <span className='border'>{formResultsOnSubmit[key]}</span>
+                        <span className='border'>{`${formResultsOnSubmit[key]}`}</span>
                       </div>
                     )
                   })

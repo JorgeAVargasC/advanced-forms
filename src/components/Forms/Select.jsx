@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ErrorMessages } from './ErrorMessages'
 
-export const Select = ({ register, name, label, validations, render, errors, options, ...rest }) => {
+export const Select = ({ register, name, label, render, errors, options, ...rest }) => {
 
   return (
     <>
@@ -10,7 +10,7 @@ export const Select = ({ register, name, label, validations, render, errors, opt
         render && (
           <div>
             <select 
-              {...register(name, validations)}
+              {...register(name)}
               className='w-full border outline-none bg-slate-950 text-white'
               {...rest}
             >
@@ -28,7 +28,6 @@ export const Select = ({ register, name, label, validations, render, errors, opt
 
             <ErrorMessages 
               errors={errors} 
-              validations={validations}
               name={name} 
               label={label} 
             />

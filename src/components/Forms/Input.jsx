@@ -2,9 +2,7 @@ import React from 'react'
 
 import { ErrorMessages } from './ErrorMessages'
 
-export const Input = ({ register, name, label, validations, render, errors, ...rest }) => {
-
-  // TODO: check validations with yup
+export const Input = ({ register, name, label, render, errors, ...rest }) => {
 
   return (
     <>
@@ -12,7 +10,7 @@ export const Input = ({ register, name, label, validations, render, errors, ...r
         render && (
           <div>
             <input 
-              {...register(name, validations)}
+              {...register(name)}
               className='w-full border outline-none bg-slate-950 text-white'
               {...rest}
             />
@@ -21,7 +19,6 @@ export const Input = ({ register, name, label, validations, render, errors, ...r
 
             <ErrorMessages 
               errors={errors} 
-              validations={validations}
               name={name} 
               label={label} 
             />

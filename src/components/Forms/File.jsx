@@ -6,7 +6,6 @@ export const File = ({
   register,
   name, 
   label,
-  validations, 
   render,
   errors, 
   control,
@@ -22,7 +21,7 @@ export const File = ({
   const [files, setFiles] = useState([])
   const [newInput, setNewInput] = useState(false) //* to solve the problem of the input type file, that does not allow to upload the same file twice
 
-  const { onChange, ...restRegister} = register(name, validations)
+  const { onChange, ...restRegister} = register(name)
 
   const fileValue = watch(name)
 
@@ -173,7 +172,6 @@ export const File = ({
 
               <ErrorMessages 
                 errors={errors} 
-                validations={validations}
                 name={name} 
                 label={label} 
               />

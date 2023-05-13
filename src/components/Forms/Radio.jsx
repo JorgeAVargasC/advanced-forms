@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ErrorMessages } from './ErrorMessages'
 
-export const Radio = ({ register, name, label, validations, render, errors, options, control, ...rest }) => {
+export const Radio = ({ register, name, label, render, errors, options, control, ...rest }) => {
 
   return (
     <>
@@ -13,7 +13,7 @@ export const Radio = ({ register, name, label, validations, render, errors, opti
               options.map((option, index) => (
                 <div key={index} className='w-full border outline-none bg-slate-950 text-white'>
                   <input
-                    {...register(name, validations)}
+                    {...register(name)}
                     className=''
                     type='radio'
                     value={option.value}
@@ -28,7 +28,6 @@ export const Radio = ({ register, name, label, validations, render, errors, opti
 
             <ErrorMessages 
               errors={errors} 
-              validations={validations}
               name={name} 
               label={label} 
             />

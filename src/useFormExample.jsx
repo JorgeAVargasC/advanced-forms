@@ -125,7 +125,7 @@ export const useFormExample = () => {
 
   const onChange = (data) => {
     setFormResultsOnChage(data)
-    console.log(data)
+    // console.log(data)
   }
 
   return {

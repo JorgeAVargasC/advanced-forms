@@ -2,10 +2,10 @@ import { useRef } from 'react'
 
 import { ErrorMessages } from './ErrorMessages'
 
-export const TextArea = ({ register, name, label, validations, render, errors, ...rest }) => {
+export const TextArea = ({ register, name, label, render, errors, ...rest }) => {
 
   const textAreaRef = useRef(null)
-  const { ref, ...restRegister } = register(name, validations)
+  const { ref, ...restRegister } = register(name)
 
   const handleAutoResize = () => {
     const textarea = textAreaRef.current;
@@ -30,7 +30,6 @@ export const TextArea = ({ register, name, label, validations, render, errors, .
 
             <ErrorMessages 
               errors={errors} 
-              validations={validations}
               name={name} 
               label={label} 
             />

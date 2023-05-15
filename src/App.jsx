@@ -1,18 +1,17 @@
-import { 
+import {
   Button,
   Checkbox,
   File,
-  Form, 
+  Form,
   Input,
   Radio,
   Select,
-  TextArea
+  TextArea,
 } from '@/components/Forms'
 
 import { useFormExample } from './useFormExample'
 
 function App() {
-
   const {
     form,
     formResultsOnSubmit,
@@ -20,7 +19,7 @@ function App() {
     formDefaultValues,
     onSubmit,
     onChange,
-    schema
+    schema,
   } = useFormExample()
 
   return (
@@ -29,76 +28,58 @@ function App() {
         <div className='border border-slate-700 p-4 flex flex-col gap-4 rounded-lg'>
           <h2 className='text-2xl font-bold'>React Hook Form</h2>
           <hr className='border border-slate-700' />
-          {
-            form && (
-              <Form 
-                onSubmit={onSubmit}
-                onChange={onChange}
-                defaultValues={formDefaultValues}
-                className='flex flex-col gap-4'
-                schema={schema}
-              >
-                <Input {...form.fullName} />
-                <Input {...form.email} />
-                <TextArea {...form.message} />
-                <Select {...form.city} />
-                <Radio {...form.dificulty} />
-                <Checkbox {...form.tools} />
-                <File {...form.photos} />
-                <Button  {...form.submit} />
-              </Form>
-            )
-          }
+          {form && (
+            <Form
+              onSubmit={onSubmit}
+              onChange={onChange}
+              defaultValues={formDefaultValues}
+              className='flex flex-col gap-4'
+              schema={schema}
+            >
+              <Input {...form.fullName} />
+              <Input {...form.email} />
+              <TextArea {...form.message} />
+              <Select {...form.city} />
+              <Radio {...form.dificulty} />
+              <Checkbox {...form.tools} />
+              <File {...form.photos} />
+              <Button {...form.submit} />
+            </Form>
+          )}
         </div>
 
         <div className='border border-slate-700 p-4 flex flex-col gap-4 rounded-lg'>
           <h2 className='text-2xl font-bold'>On Change</h2>
           <hr className='border border-slate-700' />
-          {
-            formResultsOnChage && (
-              <div className='flex flex-col'>
-                {
-                  Object.keys(formResultsOnChage).map((key, index) => (
-                    <div key={index} className='grid grid-cols-2 gap-4'>
-                      <span className='border'>{key}</span>
-                      <span className='border break-all'>{`${formResultsOnChage[key]}`}</span>
-                    </div>
-                  )
-                  )
-                }
-              </div>
-            )
-                
-          }
+          {formResultsOnChage && (
+            <div className='flex flex-col'>
+              {Object.keys(formResultsOnChage).map((key, index) => (
+                <div key={index} className='grid grid-cols-2 gap-4'>
+                  <span className='border'>{key}</span>
+                  <span className='border break-all'>{`${formResultsOnChage[key]}`}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className='border border-slate-700 p-4 flex flex-col gap-4 rounded-lg'>
           <h2 className='text-2xl font-bold'>On Submit</h2>
           <hr className='border border-slate-700' />
-          {
-            formResultsOnSubmit && (
-              <div className='flex flex-col'>
-                {
-                  Object.keys(formResultsOnSubmit).map((key, index) => {
-                    return (
-                      <div key={index} className='grid grid-cols-2 gap-4'>
-                        <span className='border'>{key}</span>
-                        <span className='border'>{`${formResultsOnSubmit[key]}`}</span>
-                      </div>
-                    )
-                  })
-                }
-              </div>
-            )
-          }
+          {formResultsOnSubmit && (
+            <div className='flex flex-col'>
+              {Object.keys(formResultsOnSubmit).map((key, index) => {
+                return (
+                  <div key={index} className='grid grid-cols-2 gap-4'>
+                    <span className='border'>{key}</span>
+                    <span className='border'>{`${formResultsOnSubmit[key]}`}</span>
+                  </div>
+                )
+              })}
+            </div>
+          )}
         </div>
       </div>
-      
-      
-      
-      
-      
-      
     </div>
   )
 }

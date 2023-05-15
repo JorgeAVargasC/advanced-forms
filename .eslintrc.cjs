@@ -10,7 +10,7 @@ module.exports = {
     'standard',
     'prettier',
   ],
-  plugins: ['react'],
+  plugins: ['react', 'simple-import-sort'],
   rules: {
     'no-unused-vars': 'warn',
     indent: [

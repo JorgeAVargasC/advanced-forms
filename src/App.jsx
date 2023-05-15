@@ -61,7 +61,7 @@ function App() {
                   Object.keys(formResultsOnChage).map((key, index) => (
                     <div key={index} className='grid grid-cols-2 gap-4'>
                       <span className='border'>{key}</span>
-                      <span className='border'>{`${formResultsOnChage[key]}`}</span>
+                      <span className='border break-all'>{`${formResultsOnChage[key]}`}</span>
                     </div>
                   )
                   )

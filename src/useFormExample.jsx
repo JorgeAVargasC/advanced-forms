@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import * as yup from 'yup';
+import * as yup from 'yup'
 
 export const useFormExample = () => {
   const [form, setForm] = useState()
@@ -10,17 +10,24 @@ export const useFormExample = () => {
     // cellPhone: 'cellPhone Default',
     email: 'jhon.doe@email.com',
     // password: 'password Default',
+		
     city: 'BOG',
     dificulty: 0.5,
     tools: ['react', 'tsx'],
-    photos: []
+    photos: [
+      'https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png'
+    ]
   })
 
   const schema = yup.object().shape({
     fullName: yup.string().required().min(2),
     message: yup.string().required().min(4).max(50),
     // cellPhone: yup.string().required().min(4).max(12).matches(/^[0-9]*$/, 'Only numbers'),
-    email: yup.string().required().email().matches(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/),
+    email: yup
+      .string()
+      .required()
+      .email()
+      .matches(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/),
     // password: yup.string().required(),
     city: yup.string().required(),
     dificulty: yup.number().required(),

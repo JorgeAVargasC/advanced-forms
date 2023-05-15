@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div className='bg-slate-950 min-h-screen w-full text-white grid place-items-center'>
-      <div className='grid md:grid-cols-3 gap-8'>
+      <div className='grid md:grid-cols-3 w-11/12 gap-8'>
         <div className='border border-slate-700 p-4 flex flex-col gap-4 rounded-lg'>
           <h2 className='text-2xl font-bold'>React Hook Form</h2>
           <hr className='border border-slate-700' />
@@ -72,7 +72,7 @@ function App() {
                 return (
                   <div key={index} className='grid grid-cols-2 gap-4'>
                     <span className='border'>{key}</span>
-                    <span className='border'>{`${formResultsOnSubmit[key]}`}</span>
+                    <span className='border break-all'>{`${formResultsOnSubmit[key]}`}</span>
                   </div>
                 )
               })}

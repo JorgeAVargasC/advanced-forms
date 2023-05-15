@@ -1,6 +1,7 @@
 import {
   Button,
   Checkbox,
+  Combobox,
   File,
   Form,
   Input,
@@ -11,7 +12,7 @@ import {
 
 import { useFormExample } from './useFormExample'
 
-function App() {
+export default function App() {
   const {
     form,
     formResultsOnSubmit,
@@ -23,8 +24,8 @@ function App() {
   } = useFormExample()
 
   return (
-    <div className='bg-slate-950 min-h-screen w-full text-white grid place-items-center'>
-      <div className='grid md:grid-cols-3 w-11/12 gap-8'>
+    <div className='bg-slate-950 min-h-screen p-32 w-full text-white grid place-items-center'>
+      <div className='grid xl:grid-cols-3 w-11/12 gap-8'>
         <div className='border border-slate-700 p-4 flex flex-col gap-4 rounded-lg'>
           <h2 className='text-2xl font-bold'>React Hook Form</h2>
           <hr className='border border-slate-700' />
@@ -43,6 +44,7 @@ function App() {
               <Radio {...form.dificulty} />
               <Checkbox {...form.tools} />
               <File {...form.photos} />
+              <Combobox {...form.skills} />
               <Button {...form.submit} />
             </Form>
           )}
@@ -83,5 +85,3 @@ function App() {
     </div>
   )
 }
-
-export default App

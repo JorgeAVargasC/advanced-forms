@@ -8,7 +8,6 @@ export const File = ({
   label,
   render,
   errors,
-  control,
   multiple,
   flatStyle = true,
   setValue,

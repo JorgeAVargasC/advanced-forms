@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import * as yup from 'yup'
 
 export const useFormExample = () => {
@@ -10,13 +11,13 @@ export const useFormExample = () => {
     // cellPhone: 'cellPhone Default',
     email: 'jhon.doe@email.com',
     // password: 'password Default',
-		
     city: 'BOG',
     dificulty: 0.5,
     tools: ['react', 'tsx'],
     photos: [
-      'https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png'
-    ]
+      'https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png',
+    ],
+    skills: ['communication', 'teamwork', 'leadership'],
   })
 
   const schema = yup.object().shape({
@@ -32,7 +33,8 @@ export const useFormExample = () => {
     city: yup.string().required(),
     dificulty: yup.number().required(),
     tools: yup.array().required(),
-    photos: yup.array().required().min(1)
+    skills: yup.array().required().min(1),
+    photos: yup.array().required().min(1),
   })
 
   const [formResultsOnSubmit, setFormResultsOnSubmit] = useState()
@@ -46,31 +48,31 @@ export const useFormExample = () => {
         name: 'fullName',
         label: 'Full Name',
         render: true,
-        disabled: false
+        disabled: false,
       },
       message: {
         name: 'message',
         label: 'Message',
         render: true,
-        disabled: false
+        disabled: false,
       },
       cellPhone: {
         name: 'cellPhone',
         label: 'Cell Phone',
         render: true,
-        disabled: false
+        disabled: false,
       },
       email: {
         name: 'email',
         label: 'Email',
         render: true,
-        disabled: false
+        disabled: false,
       },
       password: {
         name: 'password',
         label: 'Password',
         render: true,
-        disabled: false
+        disabled: false,
       },
       city: {
         name: 'city',
@@ -79,10 +81,10 @@ export const useFormExample = () => {
           { value: '', label: 'Select a city' },
           { value: 'BOG', label: 'Bogota' },
           { value: 'MED', label: 'Medellin' },
-          { value: 'CAL', label: 'Cali' }
+          { value: 'CAL', label: 'Cali' },
         ],
         render: true,
-        disabled: false
+        disabled: false,
       },
       dificulty: {
         name: 'dificulty',
@@ -90,10 +92,10 @@ export const useFormExample = () => {
         options: [
           { value: 0, label: 'Easy' },
           { value: 0.5, label: 'Medium' },
-          { value: 1, label: 'Hard' }
+          { value: 1, label: 'Hard' },
         ],
         render: true,
-        disabled: false
+        disabled: false,
       },
       tools: {
         name: 'tools',
@@ -101,23 +103,37 @@ export const useFormExample = () => {
         options: [
           { value: 'react', label: 'React' },
           { value: 'tsx', label: 'TSX' },
-          { value: 'hexagonal', label: 'Hexagonal Architecture' }
+          { value: 'hexagonal', label: 'Hexagonal Architecture' },
         ],
         render: true,
-        disabled: false
+        disabled: false,
       },
+      // *Combobox
+      skills: {
+        name: 'skills',
+        label: 'Skills',
+        isMulti: true,
+        options: [
+          { value: 'communication', label: 'Communication' },
+          { value: 'teamwork', label: 'Teamwork' },
+          { value: 'leadership', label: 'Leadership' },
+        ],
+        render: true,
+        disabled: false,
+      },
+      // *File
       photos: {
         name: 'photos',
         label: 'Photos',
         multiple: true,
         render: true,
-        disabled: false
+        disabled: false,
       },
       submit: {
         name: 'submit',
         label: 'Submit',
-        loading
-      }
+        loading,
+      },
     })
   }, [loading])
 
@@ -132,7 +148,6 @@ export const useFormExample = () => {
 
   const onChange = (data) => {
     setFormResultsOnChage(data)
-    // console.log(data)
   }
 
   return {
@@ -142,6 +157,6 @@ export const useFormExample = () => {
     formDefaultValues,
     onSubmit,
     onChange,
-    schema
+    schema,
   }
 }

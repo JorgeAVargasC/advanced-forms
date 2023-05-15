@@ -1,8 +1,11 @@
 // import React from 'react'
 import { Controller } from 'react-hook-form'
 import Select from 'react-select'
+import makeAnimated from 'react-select/animated'
 
 import { ErrorMessages } from './ErrorMessages'
+
+const animatedComponents = makeAnimated()
 
 export function Combobox({
   register,
@@ -12,8 +15,10 @@ export function Combobox({
   render,
   errors,
   options,
+  isMulti,
   ...rest
 }) {
+  // TODO: check validations, onChange and OnSubmit functions
   return (
     <>
       {render && (
@@ -21,14 +26,16 @@ export function Combobox({
           <Controller
             name={name}
             control={control}
+            
             render={({ field }) => (
               <div className='relative'>
                 <Select
                   {...field}
                   name={name}
-                  isMulti
+                  isMulti={isMulti}
                   options={options}
-                  {...rest}
+                  components={animatedComponents}
+                  
                   styles={{
                     control: (baseStyles, state) => ({
                       ...baseStyles,
@@ -51,7 +58,6 @@ export function Combobox({
                     },
                   })}
                   classNamePrefix='react-select'
-                  className='h-12 z-[11] peer grid w-full min-w-full'
                 />
               </div>
             )}
